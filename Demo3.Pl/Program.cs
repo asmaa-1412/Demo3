@@ -1,3 +1,7 @@
+using Demo3.DAL.Data.Contexts;
+using Demo3.DAL.Repositories;
+using Demo3.BLL.Services;
+
 namespace Demo3.Pl
 {
     public class Program
@@ -8,7 +12,13 @@ namespace Demo3.Pl
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            //builder.Services.AddScoped<ApplicationDbContext>();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            {
 
+            });
+            builder.Services.AddScoped<IDepartmentRepositorie, DepartmentRepositorie>();
+            builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
