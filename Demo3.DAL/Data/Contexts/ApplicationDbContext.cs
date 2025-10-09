@@ -1,5 +1,6 @@
 ﻿using Demo3.DAL.Data.Configurations;
-using Demo3.DAL.Models;
+using Demo3.DAL.Models.DepartmentModels;
+using Demo3.DAL.Models.EmployeeModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Demo3.DAL.Data.Contexts
     public class ApplicationDbContext :DbContext
     {
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {
             

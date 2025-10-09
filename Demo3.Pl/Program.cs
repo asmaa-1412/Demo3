@@ -1,6 +1,7 @@
 using Demo3.DAL.Data.Contexts;
 using Demo3.DAL.Repositories;
 using Demo3.BLL.Services;
+using Demo3.BLL.MappingProfiles;
 
 namespace Demo3.Pl
 {
@@ -19,6 +20,11 @@ namespace Demo3.Pl
             });
             builder.Services.AddScoped<IDepartmentRepositorie, DepartmentRepositorie>();
             builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
+            builder.Services.AddScoped<IEmplyeeRepositorie, EmplyeeRepositorie>();
+            builder.Services.AddScoped<IEmployeeServices, EmployeeServices>();
+
+            builder.Services.AddAutoMapper(m => m.AddProfile(new MappingProfiles()));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -1,4 +1,4 @@
-﻿using Demo3.BLL.DTOs;
+﻿using Demo3.BLL.DTOs.DepartmentDtos;
 
 namespace Demo3.BLL.Services
 {

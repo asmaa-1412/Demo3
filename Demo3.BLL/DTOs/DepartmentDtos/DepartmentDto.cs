@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo3.BLL.DTOs
+namespace Demo3.BLL.DTOs.DepartmentDtos
 {
-    public class UpdateDepartmentDto
+    public class DepartmentDto
     {
-        public int Id { get; set; }
+        public int DeptId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public string? Description { get; set; }

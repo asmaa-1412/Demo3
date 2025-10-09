@@ -1,5 +1,4 @@
 ﻿using Demo3.DAL.Data.Contexts;
-using Demo3.DAL.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Demo3.DAL.Models.DepartmentModels;
 
 namespace Demo3.DAL.Repositories
 {

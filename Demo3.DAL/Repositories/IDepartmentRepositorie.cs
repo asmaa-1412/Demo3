@@ -1,4 +1,4 @@
-﻿using Demo3.DAL.Models;
+﻿using Demo3.DAL.Models.DepartmentModels;
 
 namespace Demo3.DAL.Repositories
 {

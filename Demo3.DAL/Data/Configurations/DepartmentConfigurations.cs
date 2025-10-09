@@ -1,4 +1,4 @@
-﻿using Demo3.DAL.Models;
+﻿using Demo3.DAL.Models.DepartmentModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

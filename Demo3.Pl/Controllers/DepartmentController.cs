@@ -1,7 +1,7 @@
 ﻿using Demo3.DAL.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Demo3.BLL.Services;
-using Demo3.BLL.DTOs;
+using Demo3.BLL.DTOs.DepartmentDtos;
 
 namespace Demo3.PL.Controllers
 {
