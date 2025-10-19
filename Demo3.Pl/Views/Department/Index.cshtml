@@ -24,9 +24,8 @@
 				 <td>@department.Code</td>
 				 <td>@department.Name</td>
 				 <td>@department.Description</td>
-                 <td>@department.DateOfCreation</td> 
-				 <td><a class="btn btn-primary" asp-action="Details" asp-all-route-id="@department.DeptId"> <i class="fas fa-eys"></i>Details</a> </td>
-				 <td><a class="btn btn-success" asp action="Edit" asp-all-route-id="@department.DeptId"> <i class="fas fa-edit"></i>Edit</a> </td>
+                 <td>@department.DateOfCreation</td>
+					<partial name="_ButtonPartialView" model="@department.DeptId" />
 					@*<a class="btn btn-danger" asp-action="Delete" asp-all-route-id="@department.DeptId"><i class="fas fa-trash"></i>Deletes </a>*@
 				 <td>
 					<button type="button"

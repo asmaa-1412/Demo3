@@ -1,4 +1,5 @@
-﻿using Demo3.DAL.Models.EmployeeModels;
+﻿using Demo3.DAL.Models.DepartmentModels;
+using Demo3.DAL.Models.EmployeeModels;
 using Demo3.DAL.Models.Shared;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
@@ -21,5 +22,7 @@ namespace Demo3.DAL.Models.EmployeeModels
         public DateTime HiringDate { get; set; }
         public Gender Gender { get; set; }
         public EmployeeType EmployeeType { get; set; }
+        public int DepartmentId { get; set; }
+        public Department? Department { get; set; }
     }
 }

@@ -19,6 +19,11 @@ namespace Demo3.DAL.Data.Configurations
             builder.Property(d => d.Description).HasColumnType("varchar(200)");
             builder.Property(d => d.CreatedOn).HasDefaultValueSql("GETDATE()");
             builder.Property(d => d.LastModifiedOn).HasComputedColumnSql("GETDATE()");
+
+            builder.HasMany(d => d.Employees)
+                   .WithOne(e => e.Department)
+                   .HasForeignKey(e => e.DepartmentId)
+                   .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

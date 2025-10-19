@@ -13,8 +13,9 @@ namespace Demo3.PL.Controllers
             return View(res);
         }
         [HttpGet]
-        public IActionResult Add()
+        public IActionResult Add([FromServices]IDepartmentServices _departmentServices)
         {
+            ViewData["Department"] = _departmentServices.GetAllDepartments();
             return View();
         }
         [HttpPost]
@@ -36,8 +37,9 @@ namespace Demo3.PL.Controllers
             return View(emp);
         }
         [HttpGet]
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(int? id, [FromServices] IDepartmentServices _departmentServices)
         {
+            ViewData["Department"] = _departmentServices.GetAllDepartments();
             if (!id.HasValue) return BadRequest();
             var emp = _employeeServices.GetById(id.Value);
             if (emp is null) return NotFound();

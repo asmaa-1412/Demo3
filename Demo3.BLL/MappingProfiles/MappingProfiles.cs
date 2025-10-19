@@ -13,7 +13,9 @@ namespace Demo3.BLL.MappingProfiles
     {
         public MappingProfiles()
         {
-            CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<Employee, EmployeeDto>()
+                .ForMember(dist=>dist.Department,option=>option.MapFrom(src=> src.Department != null ? src.Department.Name : null))
+                .ReverseMap();
             //CreateMap<EmployeeDto, Employee>();
             CreateMap<Employee, EmployeeDetailsDto>().ReverseMap();
             CreateMap<Employee, CreatedEmployeeDto>().ReverseMap();
