@@ -28,7 +28,7 @@ namespace Demo3.PL.Controllers
             }
             else return View(dto);
         }
-        public IActionResult Delails(int? id)
+        public IActionResult Details(int? id)
         {
             if (!id.HasValue) return BadRequest();
             var dept = _department.GetById(id.Value);

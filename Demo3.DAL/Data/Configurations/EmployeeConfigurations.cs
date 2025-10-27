@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,11 @@ namespace Demo3.DAL.Data.Configurations
             (type) =>(EmployeeType)Enum.Parse(typeof(EmployeeType), type));
             builder.Property(d => d.CreatedOn).HasDefaultValueSql("GETDATE()");
             builder.Property(d => d.LastModifiedOn).HasComputedColumnSql("GETDATE()");
+
+            builder.HasOne(e => e.Department)
+            .WithMany(d => d.Employees)
+            .HasForeignKey(e => e.DepartmentId)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

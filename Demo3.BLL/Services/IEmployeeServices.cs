@@ -10,7 +10,7 @@ namespace Demo3.BLL.Services
 {
     public interface IEmployeeServices
     {
-        IEnumerable<EmployeeDto> GetAllEmployees();
+        IEnumerable<EmployeeDto> GetAllEmployees(string? EmployeeSearchName);
         EmployeeDetailsDto? GetById(int id);
         public int AddEmployee(CreatedEmployeeDto emp);
         public int UpdateEmployee(UpdatedEmployeeDto emp);

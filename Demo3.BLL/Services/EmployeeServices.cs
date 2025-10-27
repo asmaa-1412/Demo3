@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Demo3.BLL.DTOs.DepartmentDtos;
 using Demo3.BLL.DTOs.EmployeeDtos;
+using Demo3.BLL.Services.AttachmentServices;
 using Demo3.DAL.Models.EmployeeModels;
 using Demo3.DAL.Repositories;
 using System;
@@ -11,13 +12,18 @@ using System.Threading.Tasks;
 
 namespace Demo3.BLL.Services
 {
-    public class EmployeeServices(IEmplyeeRepositorie _employeeRepositorie, IMapper _mapper ) : IEmployeeServices
+    public class EmployeeServices(IEmplyeeRepositorie _employeeRepositorie, IMapper _mapper,IAttachmentServices _attachmentServices ) : IEmployeeServices
     {
-        public IEnumerable<EmployeeDto> GetAllEmployees()
+        public IEnumerable<EmployeeDto> GetAllEmployees(string? EmployeeSearchName)
         {
-            var emp = _employeeRepositorie.GetAll();
-            var empdto = _mapper.Map<IEnumerable<EmployeeDto>>(emp);
-            return empdto;
+            IEnumerable<Employee> emp;
+            if (string.IsNullOrWhiteSpace(EmployeeSearchName))
+                emp = _employeeRepositorie.GetAll();
+            else
+                emp = _employeeRepositorie.GetAll(e=>e.Name.ToLower().Contains( EmployeeSearchName.ToLower()));
+
+            return _mapper.Map<IEnumerable<EmployeeDto>>(emp);
+            
         }
         public EmployeeDetailsDto? GetById(int id)
         {
@@ -33,6 +39,8 @@ namespace Demo3.BLL.Services
         public int AddEmployee(CreatedEmployeeDto emp)
         {
             var employee = _mapper.Map<Employee>(emp);
+            if(emp.Image != null)
+            employee.ImageName = _attachmentServices.Uploud(emp.Image,"Images");
             return _employeeRepositorie.Add(employee);
         }
 

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace Demo3.DAL.Repositories
         private readonly ApplicationDbContext _context;
         public EmplyeeRepositorie(ApplicationDbContext context)
         {
-            context = _context;
+            _context = context;
         }
         public Employee? GetById(int id)
         {
@@ -28,6 +29,10 @@ namespace Demo3.DAL.Repositories
             if (withTracking)
                 return _context.Employees.ToList();
             else return _context.Employees.AsNoTracking().ToList();
+        }
+        public IEnumerable<Employee> GetAll(Expression<Func<Employee, bool>> predicate)
+        {
+            return _context.Set<Employee>().Where(predicate).ToList();
         }
         public int Add(Employee employee)
         {

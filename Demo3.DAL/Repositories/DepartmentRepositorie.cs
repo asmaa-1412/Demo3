@@ -16,7 +16,7 @@ namespace Demo3.DAL.Repositories
         private readonly ApplicationDbContext _context;
         public DepartmentRepositorie(ApplicationDbContext context)
         {
-            context = _context;
+            _context = context;
         }
         public Department? GetById(int id)
         {

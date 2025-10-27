@@ -1,7 +1,9 @@
 using Demo3.DAL.Data.Contexts;
 using Demo3.DAL.Repositories;
 using Demo3.BLL.Services;
+using Demo3.BLL.Services.AttachmentServices;
 using Demo3.BLL.MappingProfiles;
+using Microsoft.EntityFrameworkCore;
 
 namespace Demo3.Pl
 {
@@ -16,12 +18,13 @@ namespace Demo3.Pl
             //builder.Services.AddScoped<ApplicationDbContext>();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             {
-
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             builder.Services.AddScoped<IDepartmentRepositorie, DepartmentRepositorie>();
             builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
             builder.Services.AddScoped<IEmplyeeRepositorie, EmplyeeRepositorie>();
             builder.Services.AddScoped<IEmployeeServices, EmployeeServices>();
+            builder.Services.AddScoped<IAttachmentServices, AttachmentServices>();
 
             builder.Services.AddAutoMapper(m => m.AddProfile(new MappingProfiles()));
 

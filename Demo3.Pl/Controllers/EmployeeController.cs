@@ -7,9 +7,9 @@ namespace Demo3.PL.Controllers
 {
     public class EmployeeController(IEmployeeServices _employeeServices) : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string? Name)
         {
-            var res=_employeeServices.GetAllEmployees();
+            var res=_employeeServices.GetAllEmployees(Name);
             return View(res);
         }
         [HttpGet]
@@ -29,7 +29,7 @@ namespace Demo3.PL.Controllers
             }
             else return View(dto);
         }
-        public IActionResult Delails(int? id)
+        public IActionResult Details(int? id)
         {
             if (!id.HasValue) return BadRequest();
             var emp = _employeeServices.GetById(id.Value);
