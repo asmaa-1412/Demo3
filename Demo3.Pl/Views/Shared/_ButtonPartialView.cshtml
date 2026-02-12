@@ -1,0 +1,14 @@
+﻿@model int
+@{
+    string controllerName = ViewData["ControllerName"]?.ToString() ?? "Department";
+}
+<td>
+    <a class="btn btn-primary" asp-controller="@controllerName" asp-action="Details" asp-route-id="@Model">
+        <i class="fas fa-eye"></i> Details
+    </a>
+</td>
+<td>
+    <a class="btn btn-success" asp-controller="@controllerName" asp-action="Edit" asp-route-id="@Model">
+        <i class="fas fa-edit"></i> Edit
+    </a>
+</td>
